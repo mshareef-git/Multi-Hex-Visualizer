@@ -110,8 +110,7 @@ footer,
   gap: 14px;
 }
 header {
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
+  background: transparent;
 }
 .bar {
   min-height: 66px;
