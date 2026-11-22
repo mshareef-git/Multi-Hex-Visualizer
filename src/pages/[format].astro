@@ -1,0 +1,12 @@
+---
+import Studio from "../components/Studio.astro";
+import { formats } from "../lib/colors.js";
+export function getStaticPaths() {
+  return formats.map((format) => ({
+    params: { format: format.toLowerCase() + "-visualizer" },
+    props: { format },
+  }));
+}
+---
+
+<Studio format={Astro.props.format} />

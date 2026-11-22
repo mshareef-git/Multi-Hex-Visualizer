@@ -1,0 +1,319 @@
+---
+import "../styles/studio.css";
+import WorkspaceGuide from "./WorkspaceGuide.astro";
+import { readFileSync } from "node:fs";
+import { layouts } from "../lib/preview.js";
+import { formats } from "../lib/colors.js";
+const { format = "Auto" } = Astro.props;
+const icons = [
+  "sun",
+  "moon",
+  "circle-help",
+  "layers",
+  "square",
+  "palette",
+  "chevron-down",
+  "flask-conical",
+  "sliders-horizontal",
+  "undo-2",
+  "redo-2",
+  "copy",
+  "download",
+  "link",
+  "expand",
+  "grid-2x2",
+  "mouse-pointer-2",
+  "eye",
+  "check",
+  "x",
+  "plus",
+  "shuffle",
+  "pipette",
+  "keyboard",
+  "book-open",
+  "contrast",
+  "swatch-book",
+  "trash-2",
+  "clipboard",
+  "arrow-down-up",
+  "square-terminal",
+  "scan-eye",
+];
+const symbols = icons
+  .map(
+    (id) =>
+      '<symbol id="icon-' +
+      id +
+      '" viewBox="0 0 24 24">' +
+      readFileSync("node_modules/lucide-static/icons/" + id + ".svg", "utf8")
+        .split(/<svg[^>]*>/)[1]
+        .split("</svg>")[0] +
+      "</symbol>",
+  )
+  .join("");
+const icon = (id) =>
+  '<svg class="icon" aria-hidden="true"><use href="#icon-' + id + '"/></svg>';
+const selectors = [
+  "Auto",
+  "Comma",
+  "Space",
+  "Newline",
+  "Semicolon",
+  "Pipe",
+  "Custom",
+];
+const title =
+  format === "Auto" ? "Multi Hex Visualizer" : format + " Color Visualizer";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content={
+        "Import, edit and compare " +
+        (format === "Auto" ? "HEX, RGB, RGBA, HSL and OKLCH" : format) +
+        " color palettes in eight live layouts. Copy, export and share your workspace."
+      }
+    />
+    <script is:inline>
+      try {
+        document.documentElement.toggleAttribute(
+          "data-dark",
+          localStorage.getItem("multihex-theme") === "Dark",
+        );
+      } catch {}
+    </script>
+    <title>{title} · Palette workspace</title>
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body data-format={format}>
+    <svg class="symbols" aria-hidden="true">
+      <Fragment set:html={symbols} />
+    </svg>
+    <header>
+      <div class="bar shell">
+        <a class="brand" href="/">
+          <span class="brandmark">
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+          Multi Hex<span class="brandlight">Visualizer</span>
+        </a>
+        <div class="row">
+          <button class="topbtn" data-act="theme">
+            <Fragment set:html={icon("sun")} />
+            <span id="themeLabel">Light</span>
+          </button>
+          <span class="vline"></span>
+          <button class="topbtn" data-act="guide">
+            <Fragment set:html={icon("circle-help")} />
+            Guide
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="shell">
+      <div class="hero">
+        <div>
+          <h1>
+            {format === "Auto" ? "Palette visualizer" : format + " visualizer"}
+            <span>.</span>
+          </h1>
+          <p class="subtitle">
+            Visualize and compare HEX, RGB, RGBA, HSL, and OKLCH colors. Edit,
+            organize, copy, and export your palettes in one workspace.
+          </p>
+        </div>
+        <div class="fanart" aria-hidden="true">
+          {[
+            "#254441",
+            "#437F78",
+            "#A8C3A0",
+            "#F3DFA2",
+            "#F2A65A",
+            "#D95D39",
+          ].map((c, i) => (
+            <div
+              class="chip"
+              style={"--angle:" + (-37 + i * 13) + "deg;--c:" + c}
+            >
+              <b></b>
+              <em></em>
+              <i></i>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="workspace-title">
+        <h2>
+          <Fragment set:html={icon("layers")} />
+          Workspace
+        </h2>
+        <div class="segments">
+          <button data-act="single">
+            <Fragment set:html={icon("square")} />
+            Single Group
+          </button>
+          <button data-act="multi">
+            <Fragment set:html={icon("layers")} />
+            Multi Group
+          </button>
+        </div>
+      </div>
+      <section class="panel" aria-label="Palette workspace">
+        <div id="groups" class="groups"></div>
+        <div class="inputarea">
+          <div class="sectionhead">
+            <h3>
+              <Fragment set:html={icon("square-terminal")} />
+              Color input
+            </h3>
+            <button data-act="samples" class="textbtn">
+              <Fragment set:html={icon("shuffle")} />
+              Load sample
+            </button>
+          </div>
+          <div class="inputbox">
+            <textarea
+              id="raw"
+              aria-label="Palette color values"
+              spellcheck="false"
+              rows="2"
+            ></textarea>
+            <span class="count" id="count"></span>
+          </div>
+          <div class="inputtools">
+            <div class="row wrap">
+              <label>
+                Format{" "}
+                <select id="format">
+                  {["Auto", ...formats].map((x) => (
+                    <option value={x}>
+                      {x === "Auto" ? "Auto-detect" : x}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Separator{" "}
+                <select id="sep">
+                  {selectors.map((x) => (
+                    <option>{x}</option>
+                  ))}
+                </select>
+              </label>
+              <input
+                id="custom"
+                maxlength="12"
+                aria-label="Custom separator"
+                placeholder="Delimiter"
+                hidden
+              />
+            </div>
+            <button class="textbtn" data-act="clear">
+              <Fragment set:html={icon("trash-2")} />
+              Clear
+            </button>
+          </div>
+          <p id="example" class="example"></p>
+          <p id="validation" class="validation" aria-live="polite"></p>
+        </div>
+        <div id="previewPanel">
+          <div class="previewhead">
+            <h3>
+              <Fragment set:html={icon("scan-eye")} />
+              Live preview
+            </h3>
+            <div class="row wrap">
+              <label class="selecticon">
+                <Fragment set:html={icon("grid-2x2")} />
+                <select id="layout" aria-label="Visualization layout">
+                  {layouts.map((x) => (
+                    <option>{x}</option>
+                  ))}
+                </select>
+              </label>
+              <button
+                class="iconbtn"
+                data-act="adjust"
+                title="Visualization settings"
+                aria-label="Visualization settings"
+              >
+                <Fragment set:html={icon("sliders-horizontal")} />
+              </button>
+              <button
+                class="iconbtn"
+                data-act="fullscreen"
+                title="Fullscreen"
+                aria-label="Fullscreen"
+              >
+                <Fragment set:html={icon("expand")} />
+              </button>
+            </div>
+          </div>
+          <div id="previews"></div>
+          <div class="previewfoot">
+            <div class="segments small">
+              <button data-act="interactive">
+                <Fragment set:html={icon("mouse-pointer-2")} />
+                Interactive
+              </button>
+              <button data-act="visual">
+                <Fragment set:html={icon("eye")} />
+                Visualize only
+              </button>
+            </div>
+            <span id="hint">Select a swatch to inspect or edit</span>
+          </div>
+        </div>
+      </section>
+      <div class="actions">
+        <div class="row">
+          <button data-act="undo" title="Undo" aria-label="Undo">
+            <Fragment set:html={icon("undo-2")} />
+          </button>
+          <button data-act="redo" title="Redo" aria-label="Redo">
+            <Fragment set:html={icon("redo-2")} />
+          </button>
+        </div>
+        <div class="row wrap">
+          <button data-act="share">
+            <Fragment set:html={icon("link")} />
+            Share
+          </button>
+          <button data-act="export">
+            <Fragment set:html={icon("download")} />
+            Export
+          </button>
+          <button data-act="copy" class="primary">
+            <Fragment set:html={icon("copy")} />
+            Copy all
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer class="shell">
+      <span>Multi Hex Visualizer</span>
+      <span>Browser-based color studio</span>
+    </footer>
+    <WorkspaceGuide />
+    <dialog id="dialog" aria-labelledby="dialogTitle">
+      <div class="dialoghead">
+        <h2 id="dialogTitle"></h2>
+        <button class="iconbtn" data-act="close" aria-label="Close dialog">
+          <Fragment set:html={icon("x")} />
+        </button>
+      </div>
+      <div id="dialogBody"></div>
+    </dialog>
+    <div id="toast" role="status" hidden></div>
+    <script>
+      import "../lib/studio.js";
+    </script>
+  </body>
+</html>

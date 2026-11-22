@@ -1,0 +1,110 @@
+---
+import { formats } from "../lib/colors.js";
+---
+
+<template id="guideTemplate">
+  <section class="guide-start">
+    <h3>Start with a few colors</h3>
+    <p>
+      Paste values into Color input, or choose Load sample. The preview updates
+      as you type. Try these three together.
+    </p>
+    <div class="guide-example">
+      {["#D95D39", "#F3DFA2", "#437F78"].map((c) => (
+        <code>
+          <i style={"background:" + c}></i>
+          {c}
+        </code>
+      ))}
+    </div>
+  </section>
+  <details open>
+    <summary>Importing colors</summary>
+    <p>
+      Auto-detect accepts HEX, RGB, RGBA, HSL, and OKLCH together. Separate
+      entries with spaces, commas, newlines, semicolons, or pipes. For a list
+      like the one below, choose Custom and enter <code>::</code>.
+    </p>
+    <pre>#f80 :: rgb(10, 90, 80) :: #345</pre>
+    <p>
+      Spaces and commas inside a color function stay together. Check the message
+      below the editor for any unrecognized entries.
+    </p>
+  </details>
+  <details>
+    <summary>Working with groups</summary>
+    <p>
+      Use Single Group for one palette. Switch to Multi Group to compare up to
+      four palettes side by side or stacked on mobile. Select a group tab before
+      editing, copying, or exporting. The preview shows up to 250 colors across
+      the visible groups.
+    </p>
+  </details>
+  <details>
+    <summary>Choosing a layout</summary>
+    <p>
+      Grids, tiles, and circles help you inspect individual colors. Stripes and
+      diagonal bands show neighboring colors edge to edge. Radial arranges them
+      around a wheel.
+    </p>
+    <div class="guide-layouts" aria-hidden="true">
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+    <p>
+      Typography repeats one bold sentence for each color. Scroll sideways to
+      read the complete line on a narrow screen.
+    </p>
+  </details>
+  <details>
+    <summary>Interactive and Visualize Only</summary>
+    <p>
+      In Interactive mode, select a swatch to edit it. Open Visualization
+      settings to choose which labels appear. Switch to Visualize Only for an
+      uninterrupted view of the palette. Both modes work in fullscreen.
+    </p>
+  </details>
+  <details>
+    <summary>Editing and organizing</summary>
+    <p>
+      Select a swatch, adjust the picker or sliders, and choose Apply. You can
+      also enter a color value or give it a name. The ≈ symbol marks an
+      approximate color name.
+    </p>
+    <p>
+      Drag swatches to reorder them, or use Move earlier and Move later in the
+      editor. Visualization settings includes sorting, reversing, and a hue
+      shift for the entire active group.
+    </p>
+  </details>
+  <details>
+    <summary>Copying, exporting, and sharing</summary>
+    <p>
+      Copy an individual value from the swatch editor. Copy all takes the active
+      group, using the output format and separator in Visualization settings.
+    </p>
+    <p>
+      Export a preview as PNG or SVG, or palette data as CSS, JSON, or TXT.
+      Share copies a link to the whole workspace. Large workspaces can travel as
+      a file and be restored through Export.
+    </p>
+  </details>
+  <details>
+    <summary>Shortcuts and tips</summary>
+    <p>
+      <kbd>Tab</kbd> moves between controls. Press <kbd>Enter</kbd> on a swatch
+      to edit it, or <kbd>Esc</kbd> to close a dialog. Use <kbd>Ctrl / ⌘</kbd> +{" "}
+      <kbd>Z</kbd> to undo and add <kbd>Shift</kbd> to redo.
+    </p>
+    <p>
+      Your workspace is saved in this browser. To start with a specific input
+      format, open its visualizer below.
+    </p>
+    <nav class="formats" aria-label="Format-specific visualizers">
+      {formats.map((f) => (
+        <a href={"/" + f.toLowerCase() + "-visualizer/"}>{f}</a>
+      ))}
+    </nav>
+  </details>
+</template>
