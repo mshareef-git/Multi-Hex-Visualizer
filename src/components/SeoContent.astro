@@ -1,0 +1,198 @@
+---
+const faqs = [
+  {
+    question: "Can I visualize multiple HEX codes at once?",
+    answer:
+      "Yes. Paste a list of HEX codes into the color input and the preview updates immediately. You can use spaces, commas, new lines, semicolons, pipes, or a custom separator.",
+  },
+  {
+    question: "Does the visualizer support RGB, HSL, RGBA, and OKLCH?",
+    answer:
+      "Yes. Auto-detect accepts HEX, RGB, RGBA, HSL, and OKLCH values, including mixed-format lists. Dedicated format controls are also available when you want stricter input.",
+  },
+  {
+    question: "Can I compare more than one color palette?",
+    answer:
+      "Yes. Multi Group mode lets you create and compare up to four independent palettes. Each group can be edited separately while its preview remains visible.",
+  },
+  {
+    question: "Are my palettes uploaded or stored on a server?",
+    answer:
+      "The tool runs in your browser and saves the current workspace in local browser storage. Sharing is performed through a generated URL or an exported workspace file.",
+  },
+];
+---
+
+<section class="seo-content" aria-labelledby="about-visualizer">
+  <div class="seo-intro">
+    <h2 id="about-visualizer">Visualize, compare, and refine colors in one workspace</h2>
+    <p>
+      Multi Hex Visualizer is a free browser-based workspace for turning raw color
+      values into useful, readable palettes. Paste a handful of brand colors or a
+      large set of tokens and see every swatch immediately. Unlike a basic hex
+      color viewer, this multi hex tool keeps input, editing, comparison, and
+      export together. There is no account to create and no file to upload before
+      you can begin.
+    </p>
+    <p>
+      The tool is designed for web developers, product designers, illustrators,
+      theme creators, and anyone who needs to visualize multiple hex codes without
+      assembling a temporary design file. It also works as an RGB visualizer, HSL
+      color visualizer, RGBA color visualizer, and OKLCH color visualizer. Use one
+      format throughout a palette or let auto-detect read a mixed list.
+    </p>
+  </div>
+
+  <div class="seo-columns">
+    <article>
+      <h3>Paste multiple colors, not one at a time</h3>
+      <p>
+        A conventional color picker is useful when you already know which color
+        you want. Multi Hex Visualizer is built for the opposite problem: you
+        already have many values and need to understand them together. Paste
+        multiple HEX colors separated by commas, spaces, new lines, semicolons,
+        pipes, or your own delimiter. The parser keeps commas and spaces inside
+        RGB, RGBA, HSL, and OKLCH functions intact, so realistic CSS color lists
+        remain easy to import.
+      </p>
+      <p>
+        The live count and validation message make large lists easier to check.
+        Valid colors remain available even when another entry needs attention.
+        You can work with up to roughly 250 visible colors, reorder them, assign
+        custom names, and use undo or redo while refining the set. If you searched
+        for a way to “add multiple hex numbers,” this is the color-focused workflow
+        you are looking for: paste the codes once and inspect them as a complete
+        visual system.
+      </p>
+    </article>
+
+    <article>
+      <h3>Choose the view that reveals the right relationship</h3>
+      <p>
+        A color grid is excellent for scanning individual swatches, while stripes
+        expose the boundaries between neighboring colors. The visualizer includes
+        sharp grids, rounded tiles, circular swatches, vertical and horizontal
+        stripes, diagonal bands, a radial view, and a typography preview. Switch
+        layouts without rebuilding the palette, then enter fullscreen when you
+        want the colors to fill the display.
+      </p>
+      <p>
+        Interactive mode adds inspection and editing. Select a swatch to adjust
+        its hue, saturation, value, name, or exact color value. Visualize Only
+        removes labels and controls from the artwork, creating a clean multi color
+        visualizer for review or presentation. Because the same data powers every
+        view, you can explore composition without introducing copy-and-paste
+        errors.
+      </p>
+    </article>
+  </div>
+
+  <section class="comparison" aria-labelledby="compare-palettes">
+    <div>
+      <h2 id="compare-palettes">Compare HEX colors and complete palettes</h2>
+      <p>
+        Single Group mode is a focused hex palette visualizer for one collection.
+        Multi Group mode turns the workspace into a color palette comparison tool
+        with as many as four independent groups. Use it to compare light and dark
+        themes, evaluate brand directions, review design-token revisions, or place
+        several client palettes side by side. Group tabs keep editing predictable,
+        and the combined preview makes differences visible without merging the
+        source lists.
+      </p>
+      <p>
+        This makes the app useful as a multiple HEX color comparison tool as well
+        as a multi RGB visualizer. A developer can compare legacy RGB values with
+        new OKLCH tokens; a designer can check whether two palettes share too many
+        similar tones; and a theme author can inspect how accent colors balance
+        across separate variants. Sorting by hue, brightness, or saturation can
+        reveal patterns that are difficult to see in an unsorted text file.
+      </p>
+    </div>
+    <aside aria-label="Supported color workflows">
+      <h3>Built for real palette work</h3>
+      <ul>
+        <li>Paste and auto-detect mixed color formats</li>
+        <li>Compare up to four independent color groups</li>
+        <li>Edit, name, sort, reverse, and reorder swatches</li>
+        <li>Copy values or export PNG, SVG, CSS, JSON, and TXT</li>
+        <li>Share a restorable workspace without creating an account</li>
+      </ul>
+    </aside>
+  </section>
+
+  <div class="seo-columns">
+    <article>
+      <h3>Move between HEX, RGB, HSL, and modern color spaces</h3>
+      <p>
+        Color work rarely stays in one notation. A design handoff may contain HEX
+        codes, a stylesheet may use RGB or RGBA, and a modern token system may use
+        OKLCH. This multiple RGB color visualizer accepts all of them and provides
+        conversions for the selected swatch. You can copy the active palette in a
+        consistent output format or preserve the original mixed formats when that
+        better matches your source.
+      </p>
+      <p>
+        Alpha-aware RGBA values are supported, and HSL or OKLCH inputs can be
+        inspected alongside their visual result. That makes the workspace useful
+        for learning a color format as well as production work. Instead of
+        translating values in one tab and checking them in another, you can
+        visualize RGB values online, compare the result, and export the finished
+        palette from the same screen.
+      </p>
+    </article>
+
+    <article>
+      <h3>Export a palette you can actually use</h3>
+      <p>
+        A useful color swatch visualizer should not trap the result. Copy All
+        produces a clean list using your chosen format and separator. Data exports
+        include CSS, JSON, and plain text for development workflows. PNG and SVG
+        exports capture the current visualization for mood boards, reviews, and
+        documentation. A shareable link restores the palette and relevant view
+        settings; very large workspaces can be saved as a file instead.
+      </p>
+      <p>
+        Your current workspace is stored locally in the browser so an accidental
+        refresh does not erase it. The project is open source, making it suitable
+        for teams that prefer transparent tools. Whether you call it a bulk HEX
+        color visualizer, hex color grid generator, or palette viewer, the goal is
+        the same: spend less time moving codes between utilities and more time
+        judging the colors themselves.
+      </p>
+    </article>
+  </div>
+
+  <section class="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    {faqs.map((faq) => (
+      <details>
+        <summary>{faq.question}</summary>
+        <p>{faq.answer}</p>
+      </details>
+    ))}
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div>
+      <h2 id="contact-title">Contact and project feedback</h2>
+      <p>
+        Found a bug, have an accessibility suggestion, or want to request a color
+        workflow? Open an issue on GitHub so the report stays visible and can be
+        tracked with the project.
+      </p>
+    </div>
+    <a href="https://github.com/mshareef-git/Multi-Hex-Visualizer/issues" target="_blank" rel="noreferrer">
+      Open a GitHub issue
+    </a>
+  </section>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+})} />

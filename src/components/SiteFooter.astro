@@ -1,0 +1,81 @@
+<footer class="site-footer shell">
+  <div>
+    <a class="footer-brand" href="/">Multi Hex Visualizer</a>
+    <span>Free, browser-based color workspace</span>
+  </div>
+  <nav aria-label="Footer navigation">
+    <a href="/#contact">Contact</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a
+      class="github-link"
+      href="https://github.com/mshareef-git/Multi-Hex-Visualizer"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Multi Hex Visualizer on GitHub (opens in a new tab)"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.58 2 12.24c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.91c-2.78.62-3.37-1.2-3.37-1.2-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.98a9.3 9.3 0 0 1 2.5.34c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.56 5.05.36.32.68.94.68 1.9v2.8c0 .27.18.59.69.49A10.25 10.25 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z" />
+      </svg>
+      <span>GitHub</span>
+    </a>
+  </nav>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 0 30px;
+    margin-top: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  .site-footer div,
+  .site-footer nav,
+  .github-link {
+    display: flex;
+    align-items: center;
+  }
+  .site-footer div {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .site-footer nav {
+    gap: 18px;
+  }
+  .site-footer a {
+    color: inherit;
+    text-decoration: none;
+    text-underline-offset: 3px;
+  }
+  .site-footer a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+  .site-footer .footer-brand {
+    color: var(--ink);
+    font-weight: 650;
+  }
+  .github-link {
+    gap: 6px;
+  }
+  .github-link svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  @media (max-width: 680px) {
+    .site-footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .site-footer nav {
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+  }
+</style>

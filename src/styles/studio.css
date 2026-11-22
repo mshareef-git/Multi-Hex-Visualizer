@@ -546,6 +546,31 @@ footer {
 footer span:first-child {
   font-weight: 650;
 }
+.seo-content { margin-top: clamp(72px, 9vw, 124px); padding-top: clamp(46px, 6vw, 76px); border-top: 1px solid var(--line); }
+.seo-content h2, .seo-content h3 { text-wrap: balance; }
+.seo-content h2 { max-width: 18ch; margin: 0 0 18px; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.02; letter-spacing: -0.04em; font-weight: 620; }
+.seo-content h3 { display: block; margin: 0 0 12px; font-size: 1.22rem; line-height: 1.2; letter-spacing: -0.025em; }
+.seo-content p, .seo-content li { color: var(--muted); line-height: 1.72; }
+.seo-content p { max-width: 70ch; margin: 0 0 16px; }
+.seo-intro { display: grid; grid-template-columns: minmax(280px, .9fr) minmax(320px, 1.1fr); column-gap: clamp(36px, 8vw, 120px); align-items: start; }
+.seo-intro p { grid-column: 2; }
+.seo-intro h2 { grid-row: 1 / span 2; }
+.seo-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 7vw, 100px); margin-top: clamp(52px, 8vw, 100px); }
+.comparison { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr); gap: clamp(42px, 8vw, 120px); margin-top: clamp(70px, 10vw, 130px); padding: clamp(34px, 5vw, 64px) 0; border-block: 1px solid var(--line); }
+.comparison aside { align-self: start; padding: 24px 0 0 28px; border-left: 1px solid var(--line); }
+.comparison ul { margin: 18px 0 0; padding-left: 18px; }
+.comparison li + li { margin-top: 10px; }
+.faq { margin-top: clamp(72px, 10vw, 130px); }
+.faq h2 { margin-bottom: 32px; }
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; padding: 19px 32px 19px 0; font-weight: 610; list-style-position: outside; }
+.faq details p { max-width: 68ch; padding: 0 0 20px; margin: 0; }
+.contact { display: flex; justify-content: space-between; align-items: end; gap: 36px; margin-top: clamp(72px, 10vw, 130px); padding: clamp(32px, 5vw, 58px) 0; border-block: 1px solid var(--line); }
+.contact h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
+.contact p { margin-bottom: 0; }
+.contact > a { flex: none; min-height: 42px; padding: 10px 16px; border: 1px solid var(--ink); background: var(--ink); color: var(--on); text-decoration: none; font-size: .86rem; font-weight: 600; }
+.contact > a:hover { opacity: .84; }
 .dialoghead h2 {
   font-size: 1.3rem;
   letter-spacing: -0.05em;
@@ -748,6 +773,11 @@ dialog.guide-dialog {
   .actions button {
     padding: 7px 9px;
   }
+  .seo-intro, .seo-columns, .comparison { grid-template-columns: 1fr; }
+  .seo-intro h2, .seo-intro p { grid-column: 1; grid-row: auto; }
+  .seo-intro h2 { margin-bottom: 24px; }
+  .comparison aside { padding: 26px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+  .contact { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 480px) {
   .fanart {

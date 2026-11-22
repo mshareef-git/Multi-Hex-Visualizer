@@ -1,6 +1,8 @@
 ---
 import "../styles/studio.css";
 import WorkspaceGuide from "./WorkspaceGuide.astro";
+import SeoContent from "./SeoContent.astro";
+import SiteFooter from "./SiteFooter.astro";
 import { readFileSync } from "node:fs";
 import { layouts } from "../lib/preview.js";
 import { formats } from "../lib/colors.js";
@@ -64,6 +66,33 @@ const selectors = [
 ];
 const title =
   format === "Auto" ? "Multi Hex Visualizer" : format + " Color Visualizer";
+const isHome = format === "Auto";
+const pageTitle = isHome
+  ? "Multi Hex Visualizer — Compare Color Palettes Online"
+  : `${format} Color Visualizer — Compare Palettes Online`;
+const description = isHome
+  ? "Paste multiple HEX, RGB, HSL, RGBA, or OKLCH colors. Visualize, compare, edit, share, and export complete color palettes online for free."
+  : `Paste and visualize multiple ${format} colors online. Compare, edit, organize, copy, and export complete color palettes in eight live layouts.`;
+const canonicalPath = isHome ? "/" : `/${format.toLowerCase()}-visualizer/`;
+const canonicalUrl = `https://mshareef-git.github.io/Multi-Hex-Visualizer${canonicalPath}`;
+const ogImage = "https://mshareef-git.github.io/Multi-Hex-Visualizer/og-image.png";
+const appSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: title,
+  url: canonicalUrl,
+  applicationCategory: "DesignApplication",
+  operatingSystem: "Any",
+  browserRequirements: "Requires a modern web browser",
+  description,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  featureList: [
+    "Visualize multiple HEX, RGB, RGBA, HSL, and OKLCH colors",
+    "Compare up to four color palettes",
+    "Eight color visualization layouts",
+    "Export palettes as PNG, SVG, CSS, JSON, or TXT",
+  ],
+};
 ---
 
 <!doctype html>
@@ -71,14 +100,25 @@ const title =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content={
-        "Import, edit and compare " +
-        (format === "Auto" ? "HEX, RGB, RGBA, HSL and OKLCH" : format) +
-        " color palettes in eight live layouts. Copy, export and share your workspace."
-      }
-    />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Multi Hex Visualizer" />
+    <meta name="theme-color" content="#f7f7f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16171a" media="(prefers-color-scheme: dark)" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Multi Hex Visualizer" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Multi Hex Visualizer showing a grid of color swatches" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <script is:inline>
       try {
         document.documentElement.toggleAttribute(
@@ -87,8 +127,9 @@ const title =
         );
       } catch {}
     </script>
-    <title>{title} · Palette workspace</title>
+    <title>{pageTitle}</title>
     <link rel="icon" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
   </head>
   <body data-format={format}>
     <svg class="symbols" aria-hidden="true">
@@ -121,12 +162,12 @@ const title =
       <div class="hero">
         <div>
           <h1>
-            {format === "Auto" ? "Palette visualizer" : format + " visualizer"}
+            {isHome ? "Multi Hex Visualizer" : format + " Color Visualizer"}
             <span>.</span>
           </h1>
           <p class="subtitle">
-            Visualize and compare HEX, RGB, RGBA, HSL, and OKLCH colors. Edit,
-            organize, copy, and export your palettes in one workspace.
+            Paste multiple HEX, RGB, RGBA, HSL, or OKLCH colors. Compare, edit,
+            organize, copy, and export complete palettes in one workspace.
           </p>
         </div>
         <div class="fanart" aria-hidden="true">
@@ -296,11 +337,9 @@ const title =
           </button>
         </div>
       </div>
+      {isHome && <SeoContent />}
     </main>
-    <footer class="shell">
-      <span>Multi Hex Visualizer</span>
-      <span>Browser-based color studio</span>
-    </footer>
+    <SiteFooter />
     <WorkspaceGuide />
     <dialog id="dialog" aria-labelledby="dialogTitle">
       <div class="dialoghead">

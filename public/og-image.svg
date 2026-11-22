@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f3f3f1"/><path d="M0 0h1200v14H0z" fill="#20211f"/>
+  <g transform="translate(82 78)"><rect width="54" height="54" fill="#20211f"/><path d="m13 33 14-20 6 4-14 20zm13 4 14-20 6 4-14 20z" fill="#f3f3f1"/><text x="76" y="39" font-family="Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="-1.5" fill="#20211f">Multi Hex Visualizer</text></g>
+  <text x="82" y="246" font-family="Arial, sans-serif" font-size="74" font-weight="700" letter-spacing="-3" fill="#20211f">See every color.</text><text x="82" y="326" font-family="Arial, sans-serif" font-size="74" font-weight="700" letter-spacing="-3" fill="#20211f">Compare the whole palette.</text><text x="86" y="391" font-family="Arial, sans-serif" font-size="25" fill="#62645e">HEX · RGB · RGBA · HSL · OKLCH</text>
+  <g transform="translate(82 456)"><rect width="165" height="94" fill="#254441"/><rect x="165" width="165" height="94" fill="#437F78"/><rect x="330" width="165" height="94" fill="#A8C3A0"/><rect x="495" width="165" height="94" fill="#F3DFA2"/><rect x="660" width="165" height="94" fill="#F2A65A"/><rect x="825" width="165" height="94" fill="#D95D39"/></g>
+</svg>

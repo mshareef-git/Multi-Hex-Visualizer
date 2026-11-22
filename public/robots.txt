@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mshareef-git.github.io/Multi-Hex-Visualizer/sitemap.xml
