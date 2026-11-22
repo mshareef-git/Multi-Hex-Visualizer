@@ -79,3 +79,28 @@ src/styles/            Global visualizer and content styles
 tests/                 Color and palette behavior tests
 ```
 
+## SEO deployment URL
+
+Canonical URLs, Open Graph URLs, `robots.txt`, and `sitemap.xml` currently use:
+
+```text
+https://mshareef-git.github.io/Multi-Hex-Visualizer/
+```
+
+If the project is deployed to a custom domain or a Cloudflare Pages domain, update that origin in:
+
+- `src/components/Studio.astro`
+- `src/layouts/Layout.astro`
+- `public/robots.txt`
+- `public/sitemap.xml`
+
+Also verify that the deployment base path matches the absolute internal links used by the site.
+
+## Privacy model
+
+Palette data is processed in the browser. Workspace state and theme preference are stored in local storage. Shared workspaces are encoded into URL fragments, and oversized workspaces can be exported as files. The application does not include user accounts or an application database.
+
+## Repository
+
+[github.com/mshareef-git/Multi-Hex-Visualizer](https://github.com/mshareef-git/Multi-Hex-Visualizer)
+
